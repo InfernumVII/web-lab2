@@ -1,0 +1,66 @@
+svg {
+    border: 1px solid white;
+}
+svg text {
+    font: italic 13px arial;
+    fill: white
+}
+input[type="radio"] {
+    display: inline;
+}
+label {
+    margin-right: 7px;
+}
+fieldset {
+    display: block;
+    width: fit-content;
+}
+input[type="text"]{
+    background: transparent;
+    border: none;
+    color: white;
+}
+#input-text-error {
+    color: #DC143C;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+.figures {
+    fill: #3399FF;
+}
+.point {
+    fill: red;
+}
+#button-submit {
+    margin-top: 10px;
+    background: linear-gradient(45deg, #6e3aff, #ff3864);
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    width: 100px;
+    height: 30px;
+    transform: translateY(0);
+    transition: transform 0.3s;
+}
+#button-submit:hover {
+    transform: translateY(-5px);
+}
+#button-submit:disabled {
+    background: linear-gradient(45deg, #412296, #96213A);
+}
+.chart {
+    width: fit-content;
+}
+#info-table {
+    width: fit-content;
+    margin-left: 10px;
+}
+#info-table table, th, td {
+    border:1px solid white;
+    max-width: 60vw;
+    word-break: break-all;
+}
+.first-row {
+    display: flex;
+}
