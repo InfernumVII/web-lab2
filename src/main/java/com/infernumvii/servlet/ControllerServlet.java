@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.infernumvii.model.Cords;
+import com.infernumvii.model.StartTime;
 
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -26,6 +27,8 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ControllerServlet extends HttpServlet {
     @Inject
     Cords cords;
+    @Inject
+    StartTime startTime;
 
     private boolean formatCords(Function<String, String> t){
         cords.setX(new BigDecimal(t.apply("x")));
@@ -42,6 +45,7 @@ public class ControllerServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        startTime.setStartTime(System.nanoTime());
         if (!checkCords(request.getParameterNames()) || !formatCords(request::getParameter)) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, String.format("%s, %s, %s, %s, %s, %s, %s", Collections.list(request.getParameterNames()).stream().collect(Collectors.joining("\n")), cords, checkCords(request.getParameterNames()), formatCords(request::getParameter), cords.checkX(), cords.checkY(), cords.checkR()));
             return;

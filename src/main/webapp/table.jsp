@@ -21,14 +21,14 @@
                         <th>timeExecution</th>
                         <th>Success</th>
                     </tr>
-                    <c:forEach var="item" items="${tableC.getHistory()}">
+                    <c:forEach var="item" items="${tableC.history}">
                         <tr>
-                            <td>${item.getCords().getX().toPlainString()}</td>
-                            <td>${item.getCords().getY()}</td>
-                            <td>${item.getCords().getR()}</td>
-                            <td>${item.getCurrentTimeSeconds()}</td>
-                            <td>${item.getTimeExecution()}</td>
-                            <td>${item.isSuccess()}</td>
+                            <td>${item.cords.x.toPlainString()}</td>
+                            <td>${item.cords.y}</td>
+                            <td>${item.cords.r}</td>
+                            <td>${item.currentTimeSeconds}</td>
+                            <td>${item.timeExecution} micros</td>
+                            <td>${item.success}</td>
                         </tr>
                     </c:forEach>
                 </table>
