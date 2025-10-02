@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,11 +30,11 @@
                         
                         <ellipse cx="75" cy="75" rx="20" ry="5" stroke="red" fill="transparent" stroke-width="5"/> -->
                         
-                        <polygon class="figures" points="220,220 44,220 220,308"></polygon>
-                        <rect class="figures" x="220" y="220" width="176" height="176"/>
+                        <polygon class="figures" points="220,220 220,132 132,220"></polygon>
+                        <rect class="figures" x="220" y="132" width="176" height="88"/>
                         <defs>
                             <clipPath id="half-half-circle">
-                                <rect x="220" y="132" width="88" height="88"/>
+                                <rect x="220" y="220" width="88" height="88"/>
                             </clipPath>
                         </defs>
                         <circle class="figures" cx="220" cy="220" r="88" clip-path="url(#half-half-circle)"/>
@@ -93,43 +94,56 @@
                             <th>timeExecution</th>
                             <th>Success</th>
                         </tr>
+                        <c:forEach var="item" items="${tableC.getHistory()}">
+                            <tr>
+                                <td>${item.getCords().getX().toPlainString()}</td>
+                                <td>${item.getCords().getY()}</td>
+                                <td>${item.getCords().getR()}</td>
+                                <td>${item.getCurrentTimeSeconds()}</td>
+                                <td>${item.getTimeExecution()}</td>
+                                <td>${item.isSuccess()}</td>
+                            </tr>
+                        </c:forEach>
                     </table>
                 </div>
                 
             </div>
             
-            <div id="point-input">
+
+            <form action="/api" method="get" class="xyR-form">
                 <fieldset>
                     <legend>X</legend>
-                    <div>
-                        <input type="radio" id="choice-1" name="X" value="-4"/>
-                        <label for="choice-1">-4</label>
-                        <input type="radio" id="choice-2" name="X" value="-3"/>
-                        <label for="choice-2">-3</label>
-                        <input type="radio" id="choice-3" name="X" value="-2"/>
-                        <label for="choice-3">-2</label>
-                        <input type="radio" id="choice-4" name="X" value="-1"/>
-                        <label for="choice-4">-1</label>
-                        <input type="radio" id="choice-5" name="X" value="0" checked/>
-                        <label for="choice-5">0</label>
-                        <input type="radio" id="choice-6" name="X" value="1"/>
-                        <label for="choice-6">1</label>
-                        <input type="radio" id="choice-7" name="X" value="2"/>
-                        <label for="choice-7">2</label>
-                        <input type="radio" id="choice-8" name="X" value="3"/>
-                        <label for="choice-8">3</label>
-                        <input type="radio" id="choice-9" name="X" value="4"/>
-                        <label for="choice-9">4</label>
+                    <div id="input-text-error"></div>
+                    <div class="xyR-form">
+                        <input id="input-x" type="text" placeholder="Enter x cord: " oninput="onInputTextUpdate(this.value)" value="1" maxlength="10" name="x">
                     </div>
                 </fieldset>
                 <fieldset>
                     <legend>Y</legend>
-                    <div id="input-text-error"></div>
-                    <input id="input-y" type="text" placeholder="Enter y cord: " oninput="onInputTextUpdate(this.value)" value="1" maxlength="10">
+                    <div class="xyR-form">
+                        <input type="radio" id="choice-1" name="y" value="-3"/>
+                        <label for="choice-1">-3</label>
+                        <input type="radio" id="choice-2" name="y" value="-2"/>
+                        <label for="choice-2">-2</label>
+                        <input type="radio" id="choice-3" name="y" value="-1"/>
+                        <label for="choice-3">-1</label>
+                        <input type="radio" id="choice-4" name="y" value="0" checked/>
+                        <label for="choice-4">0</label>
+                        <input type="radio" id="choice-5" name="y" value="1"/>
+                        <label for="choice-5">1</label>
+                        <input type="radio" id="choice-6" name="y" value="2"/>
+                        <label for="choice-6">2</label>
+                        <input type="radio" id="choice-7" name="y" value="3"/>
+                        <label for="choice-7">3</label>
+                        <input type="radio" id="choice-8" name="y" value="4"/>
+                        <label for="choice-8">4</label>
+                        <input type="radio" id="choice-9" name="y" value="5"/>
+                        <label for="choice-9">5</label>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>R</legend>
-                    <div>
+                    <div class="xyR-form">
                         <input type="radio" id="choice-1" name="R" value="1" checked/>
                         <label for="choice-1">1</label>
                         <input type="radio" id="choice-2" name="R" value="2"/>
@@ -142,10 +156,12 @@
                         <label for="choice-5">5</label>
                     </div>
                 </fieldset>
-            </div>
-            <button id="button-submit" type="button" onclick="submitOnClick()">
-                SUBMIT
-            </button>
+                <div class="xyR-form">
+                    <button id="button-submit" type="submit">
+                        SUBMIT
+                    </button>
+                </div>                
+            </form>
         </div>
     </body>
 </html>

@@ -22,8 +22,8 @@ function checkValueWithError(text){
     if (!checkNumber(text)){
         errorText = "Error: value should be number"
     } else {
-        if (!checkNumberBetween(-5, 3, text)){
-            errorText = "Error: value should be between -5 and 3"
+        if (!checkNumberBetween(-3, 3, text)){
+            errorText = "Error: value should be between -3 and 3"
         } else {
             success = true
         }
@@ -44,6 +44,8 @@ function drawPoint(x, y, R){
     point.setAttribute("cx", pointX)
     point.setAttribute("cy", pointY)
 }
+
+
 
 function submitOnClick(){
     const x = document.querySelector('input[name="X"]:checked').value

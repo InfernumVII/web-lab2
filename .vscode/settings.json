@@ -1,4 +1,5 @@
 {
-    "mavenPackageAuto.enable": true,
-    "mavenPackageAuto.maven.executable.options": "clean package"
+    "mavenPackageAuto.enable": false,
+    "mavenPackageAuto.maven.executable.options": "package",
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
