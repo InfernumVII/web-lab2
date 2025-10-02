@@ -8,8 +8,8 @@ body {
 }
 #info-table table, th, td {
     border:1px solid white;
-    max-width: 60vw;
-    min-width: 5vw;
+    max-width: 95vw;
+    min-width: 10vw;
     word-break: break-all;
     color: white;
 }

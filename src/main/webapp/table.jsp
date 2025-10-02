@@ -21,7 +21,7 @@
                         <th>timeExecution</th>
                         <th>Success</th>
                     </tr>
-                    <c:forEach var="item" items="${tableC.history}">
+                    <c:forEach var="item" items="${tableController.history}">
                         <tr>
                             <td>${item.cords.x.toPlainString()}</td>
                             <td>${item.cords.y}</td>

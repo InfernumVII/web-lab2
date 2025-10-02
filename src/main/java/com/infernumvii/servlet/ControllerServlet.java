@@ -13,8 +13,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.infernumvii.controller.TableController;
 import com.infernumvii.model.Cords;
-import com.infernumvii.model.StartTime;
+import com.infernumvii.model.TableRow;
+import com.infernumvii.service.AreaCheckService;
+import com.infernumvii.service.TableService;
 
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -25,39 +28,29 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/api")
 public class ControllerServlet extends HttpServlet {
-    @Inject
-    Cords cords;
-    @Inject
-    StartTime startTime;
+    
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        long startTime = System.nanoTime();
+        request.setAttribute("startTime", startTime);
 
-    private boolean formatCords(Function<String, String> t){
-        cords.setX(new BigDecimal(t.apply("x")));
-        cords.setY(Double.parseDouble(t.apply("y")));
-        cords.setR(Double.parseDouble(t.apply("R")));
-        return cords.validateCords();
+        if (!hasValidParameters(request)) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, 
+                "Missing or invalid parameters. Required: x, y, R");
+            return;
+        }
+
+        request.getRequestDispatcher("/api/area-check").forward(request, response);
     }
-
-    private boolean checkCords(Enumeration<String> paramsEnumeration) {
+    
+    private boolean hasValidParameters(HttpServletRequest request) {
+        Enumeration<String> paramsEnumeration = request.getParameterNames();
         List<String> params = Collections.list(paramsEnumeration);
         return (params.stream()
             .allMatch(param -> Set.of("x", "y", "R").contains(param)) 
             && params.size() == 3);
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        startTime.setStartTime(System.nanoTime());
-        if (!checkCords(request.getParameterNames()) || !formatCords(request::getParameter)) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, String.format("%s, %s, %s, %s, %s, %s, %s", Collections.list(request.getParameterNames()).stream().collect(Collectors.joining("\n")), cords, checkCords(request.getParameterNames()), formatCords(request::getParameter), cords.checkX(), cords.checkY(), cords.checkR()));
-            return;
-        }
-        request.getRequestDispatcher("/api/area-check").forward(request, response);
-    }
     
-    // public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    //     BufferedReader requestReader = request.getReader();
-    //     String n = requestReader.lines().collect(Collectors.joining(("\n")));
-    //     PrintWriter printWriter = response.getWriter();
-    //     printWriter.println(n);
-    // }
+    
 
 }
