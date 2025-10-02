@@ -28,9 +28,9 @@ public class ControllerServlet extends HttpServlet {
     Cords cords;
 
     private boolean formatCords(Function<String, String> t){
-        cords.setX(new BigDecimal(t.apply("y")));
-        cords.setY(Integer.parseInt(t.apply("x")));
-        cords.setR(Integer.parseInt(t.apply("R")));
+        cords.setX(new BigDecimal(t.apply("x")));
+        cords.setY(Double.parseDouble(t.apply("y")));
+        cords.setR(Double.parseDouble(t.apply("R")));
         return cords.validateCords();
     }
 

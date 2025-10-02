@@ -121,39 +121,19 @@
                 <fieldset>
                     <legend>Y</legend>
                     <div class="xyR-form">
-                        <input type="radio" id="choice-1" name="y" value="-3"/>
-                        <label for="choice-1">-3</label>
-                        <input type="radio" id="choice-2" name="y" value="-2"/>
-                        <label for="choice-2">-2</label>
-                        <input type="radio" id="choice-3" name="y" value="-1"/>
-                        <label for="choice-3">-1</label>
-                        <input type="radio" id="choice-4" name="y" value="0" checked/>
-                        <label for="choice-4">0</label>
-                        <input type="radio" id="choice-5" name="y" value="1"/>
-                        <label for="choice-5">1</label>
-                        <input type="radio" id="choice-6" name="y" value="2"/>
-                        <label for="choice-6">2</label>
-                        <input type="radio" id="choice-7" name="y" value="3"/>
-                        <label for="choice-7">3</label>
-                        <input type="radio" id="choice-8" name="y" value="4"/>
-                        <label for="choice-8">4</label>
-                        <input type="radio" id="choice-9" name="y" value="5"/>
-                        <label for="choice-9">5</label>
+                        <c:forEach var="i" begin="0" end="8">
+                            <input type="radio" id="choice-${i - 3}" name="y" value="${i - 3}" <c:if test="${i == 0}">checked</c:if>/>
+                            <label for="choice-${i - 3}">${i - 3}</label>
+                        </c:forEach>
                     </div>
                 </fieldset>
                 <fieldset>
                     <legend>R</legend>
                     <div class="xyR-form">
-                        <input type="radio" id="choice-1" name="R" value="1" checked/>
-                        <label for="choice-1">1</label>
-                        <input type="radio" id="choice-2" name="R" value="2"/>
-                        <label for="choice-2">2</label>
-                        <input type="radio" id="choice-3" name="R" value="3"/>
-                        <label for="choice-3">3</label>
-                        <input type="radio" id="choice-4" name="R" value="4"/>
-                        <label for="choice-4">4</label>
-                        <input type="radio" id="choice-5" name="R" value="5"/>
-                        <label for="choice-5">5</label>
+                        <c:forEach var="i" begin="1" end="5">
+                            <input type="radio" id="choice-${i}" name="R" value="${i}" <c:if test="${i == 1}">checked</c:if>/>
+                            <label for="choice-${i}">${i}</label>
+                        </c:forEach>
                     </div>
                 </fieldset>
                 <div class="xyR-form">

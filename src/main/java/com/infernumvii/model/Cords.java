@@ -15,12 +15,12 @@ public class Cords implements Serializable {
     private BigDecimal x;
     private static final BigDecimal maxX = new BigDecimal(3);
     private static final BigDecimal minX = new BigDecimal(-3);
-    private int y;
-    private static final int minY = -3;
-    private static final int maxY = 5;
-    private int R;
-    private static final int minR = 1;
-    private static final int maxR = 5;
+    private double y;
+    private static final double minY = -3.;
+    private static final double maxY = 5.;
+    private double R;
+    private static final double minR = 1.;
+    private static final double maxR = 5.;
 
     public Cords() {
     }

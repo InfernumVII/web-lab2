@@ -36,6 +36,6 @@ public class AreaCheckServlet extends HttpServlet {
         updateRow();
         PrintWriter printWriter = response.getWriter();
         // printWriter.println(tableController.getHistory().size());
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        response.sendRedirect(request.getContextPath() + "/table.jsp");
     }
 }

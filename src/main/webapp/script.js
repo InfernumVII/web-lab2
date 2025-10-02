@@ -112,20 +112,69 @@ function createParticles() {
     }
 }
 
-function updateTable() {
-    fetch("api", {
-        method: "GET",
-    })
-    .then((response) => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+// function updateTable() {
+//     fetch("api", {
+//         method: "GET",
+//     })
+//     .then((response) => {
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! status: ${response.status}`);
+//         }
+//         return response.text();
+//     })
+//     .then((data) => {
+//         document.getElementById("info-table").innerHTML = `<table>${data}</table>`
+//     });
+// }
+function svgMouseMovement(){
+    const toSVGPoint = (svg, x, y) => {
+      let p = new DOMPoint(x, y);
+      return p.matrixTransform(svg.getScreenCTM().inverse());
+    };
+    const svg = document.querySelector("svg")
+    svg.addEventListener("mousemove", e => {
+        let p = toSVGPoint(svg, e.clientX, e.clientY);
+        const point = document.querySelector(".point")
+        point.setAttribute("cx", p.x)
+        point.setAttribute("cy", p.y)
+    });
+    svg.addEventListener("click", e => {
+        const point = document.querySelector(".point")
+        const cx = point.getAttribute("cx")
+        const cy = point.getAttribute("cy")
+        const R = parseInt(document.querySelector('input[name="R"]:checked').value)
+
+        console.log(cx, cy);
+        const globalStep = chartStep / R
+        const x = (cx - 220) / globalStep
+        const y = (220 - cy) / globalStep
+        const data = {
+            x: x,
+            y: y,
+            R: R
         }
-        return response.text();
-    })
-    .then((data) => {
-        document.getElementById("info-table").innerHTML = `<table>${data}</table>`
+        
+        fetch(`/api?${new URLSearchParams(Object.entries(data)).toString()}`, {
+            method: "GET",
+            headers: {  
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"  
+            },  
+            redirect: "follow"
+        })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } 
+            if (response.redirected) {
+                window.location.href = response.url;
+            }
+        })
+        .catch(function(err) {
+            console.info(err + " url: " + url);
+        });
     });
 }
 
+window.addEventListener('load', svgMouseMovement);
 window.addEventListener('load', createParticles);
-window.addEventListener('load', updateTable);
+// window.addEventListener('load', updateTable);
