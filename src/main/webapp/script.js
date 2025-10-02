@@ -131,18 +131,15 @@ function svgMouseMovement(){
       let p = new DOMPoint(x, y);
       return p.matrixTransform(svg.getScreenCTM().inverse());
     };
-    let svg = document.querySelector("svg")
-    let point = document.querySelector(".point")
+    const svg = document.querySelector("svg")
     svg.addEventListener("mousemove", e => {
         let p = toSVGPoint(svg, e.clientX, e.clientY);
+        const point = document.querySelector(".point")
         point.setAttribute("cx", p.x)
         point.setAttribute("cy", p.y)
     });
-    svg.addEventListener("mouseout", e => {
-        point.setAttribute("cx", 220)
-        point.setAttribute("cy", 220)
-    })
     svg.addEventListener("click", e => {
+        const point = document.querySelector(".point")
         const cx = point.getAttribute("cx")
         const cy = point.getAttribute("cy")
         const R = parseInt(document.querySelector('input[name="R"]:checked').value)
