@@ -81,6 +81,12 @@
                         <path d="M20,230 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="5"/> -->
                         <!---->
                         <circle class="point" cx="220" cy="220" r="5"/>
+                        <c:if test="${not empty tableC.history}">
+                            <circle class="point-last" 
+                                    cx="${tableC.history.getLast().cords.getChartX()}" 
+                                    cy="${tableC.history.getLast().cords.getChartY()}" 
+                                    r="5"/>
+                        </c:if>
                     </svg>
                 </div>
                 

@@ -21,8 +21,19 @@ public class Cords implements Serializable {
     private double R;
     private static final double minR = 1.;
     private static final double maxR = 5.;
+    private final int chartStep = 176;
 
     public Cords() {
+    }
+
+    public String getChartX(){
+        BigDecimal globalStep = new BigDecimal(chartStep / R);
+        return (x.multiply(globalStep).add(new BigDecimal(220))).toPlainString();
+    }
+
+    public String getChartY() {
+        double globalStep = chartStep / R;
+        return String.valueOf(220 - globalStep * y);
     }
 
     public boolean checkY(){
