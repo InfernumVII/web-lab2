@@ -12,7 +12,7 @@ import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class TableService {
-    
+
     @Inject
     private AreaCheckService areaCheckService;
 
@@ -25,14 +25,8 @@ public class TableService {
         
         boolean success = areaCheckService.isPointInTheArea(cords);
         
-        Cords cordsCopy = new Cords(
-            cords.getX(), 
-            cords.getY(), 
-            cords.getR()
-        );
-        
         return new TableRow(
-            cordsCopy,
+            cords,
             formatter.format(date),
             executionTimeMicros,
             success

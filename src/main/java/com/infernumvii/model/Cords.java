@@ -1,9 +1,6 @@
 package com.infernumvii.model;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-
-import jakarta.enterprise.context.RequestScoped;
 import lombok.*;
 
 @Getter

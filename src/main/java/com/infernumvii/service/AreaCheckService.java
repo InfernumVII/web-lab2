@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import com.infernumvii.model.Cords;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.context.RequestScoped;
 
 @ApplicationScoped
 public class AreaCheckService {

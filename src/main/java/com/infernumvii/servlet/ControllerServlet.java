@@ -1,34 +1,15 @@
 package com.infernumvii.servlet;
 
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import com.infernumvii.controller.TableController;
-import com.infernumvii.model.Cords;
-import com.infernumvii.model.TableRow;
-import com.infernumvii.service.AreaCheckService;
-import com.infernumvii.service.TableService;
-
-import jakarta.inject.Inject;
+import java.util.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 @WebServlet("/api")
 public class ControllerServlet extends HttpServlet {
-    
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         long startTime = System.nanoTime();
         request.setAttribute("startTime", startTime);

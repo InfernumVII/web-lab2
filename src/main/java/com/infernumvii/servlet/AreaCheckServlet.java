@@ -1,25 +1,14 @@
 package com.infernumvii.servlet;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
-
 import com.infernumvii.controller.TableController;
-import com.infernumvii.model.Cords;
-import com.infernumvii.model.TableRow;
-import com.infernumvii.service.AreaCheckService;
-import com.infernumvii.service.TableService;
-
+import com.infernumvii.model.*;
+import com.infernumvii.service.*;
 import jakarta.inject.Inject;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
+
 
 
 @WebServlet("/api/area-check")
