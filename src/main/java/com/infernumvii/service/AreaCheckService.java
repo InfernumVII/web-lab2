@@ -13,7 +13,9 @@ public class AreaCheckService {
         BigDecimal x = cords.getX();
         double y = cords.getY();
         double R = cords.getR();
-
+        //TODO p = x.pow(2).add(new BigDecimal(y).pow(2))
+        //    .compareTo(new BigDecimal(R * R / 4.0f)) <= 0 
+        
         boolean circleCond = (
             x.compareTo(BigDecimal.ZERO) >= 0 &&
             y <= 0 &&

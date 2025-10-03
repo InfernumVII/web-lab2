@@ -81,11 +81,14 @@
                         <path d="M20,230 Q40,205 50,230 T90,230" fill="none" stroke="blue" stroke-width="5"/> -->
                         <!---->
                         <circle class="point" cx="220" cy="220" r="5"/>
-                        <c:if test="${not empty viewHelper.lastChartPoint}">
-                            <circle class="point-last" 
-                                    cx="${viewHelper.lastChartPoint.chartX}" 
-                                    cy="${viewHelper.lastChartPoint.chartY}" 
-                                    r="5"/>
+                        <c:if test="${not empty tableController.history}">
+                            <c:forEach var="i" begin="0" end="${tableController.history.size() - 1}">
+                                <circle class="point-last${i}" 
+                                        id="point-last"
+                                        cx="${viewHelper.getChartPoint(i).chartX}" 
+                                        cy="${viewHelper.getChartPoint(i).chartY}" 
+                                        r="5"/>
+                            </c:forEach>
                         </c:if>
                     </svg>
                 </div>
