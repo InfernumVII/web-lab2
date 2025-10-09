@@ -13,7 +13,7 @@
             <head>
                 <link rel="stylesheet" href="css/header-styles.css">
             </head>
-            <div class="header-item" id="full-name">ФИО: Швецов Егор Максимович <-</div>
+            <div class="header-item" id="full-name">ФИО: Швецов Егор Максимович</div>
             <div class="header-item" id="group-number">Номер группы: P3206</div>
             <div class="header-item" id="variant">Вариант: 468074</div>
         </div>
