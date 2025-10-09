@@ -50,4 +50,4 @@ jobs:
             jboss-cli.sh --connect --controller=${{ secrets.WILDFLY_HOST }}:9990 \
               --user=${{ secrets.WILDFLY_USERNAME }} \
               --password=${{ secrets.WILDFLY_PASSWORD }} \
-              --command="deploy staging/*.war --force"
+              --command="deploy target/*.war --force"
