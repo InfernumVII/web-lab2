@@ -43,10 +43,7 @@ jobs:
             WILDFLY_VERSION=37.0.1.Final
             wget -q https://github.com/wildfly/wildfly/releases/download/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz
             tar -xzf wildfly-$WILDFLY_VERSION.tar.gz
-            ls -lrt -d -1 "$PWD"/{*,.*}
-            echo "$(pwd)/wildfly-$WILDFLY_VERSION/bin" >> $PATH
             echo "$(pwd)/wildfly-$WILDFLY_VERSION/bin"
-            echo $PATH
 
         - name: Deploy using CLI
           run: |
