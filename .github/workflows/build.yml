@@ -47,6 +47,7 @@ jobs:
 
         - name: Deploy using CLI
           run: |
+            ls -la "$(pwd)/staging"
             jboss-cli.sh --connect --controller=${{ secrets.WILDFLY_HOST }}:9990 \
               --user=${{ secrets.WILDFLY_USERNAME }} \
               --password=${{ secrets.WILDFLY_PASSWORD }} \
