@@ -47,7 +47,6 @@ jobs:
 
         - name: Deploy using CLI
           run: |
-            echo $GITHUB_PATH
             jboss-cli.sh --connect --controller=${{ secrets.WILDFLY_HOST }}:9990 \
               --user=${{ secrets.WILDFLY_USERNAME }} \
               --password=${{ secrets.WILDFLY_PASSWORD }} \
