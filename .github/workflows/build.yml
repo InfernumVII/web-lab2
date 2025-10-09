@@ -31,3 +31,17 @@ jobs:
           with:
             name: Package
             path: staging
+        
+        - name: Download and setup WildFly 
+          run: |
+            WILDFLY_VERSION=37.0.1.Final
+            wget https://github.com/wildfly/wildfly/releases/download/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz
+            tar -xzf wildfly-$WILDFLY_VERSION.tar.gz
+            echo "$HOME/wildfly-$WILDFLY_VERSION/bin" >> $GITHUB_PATH
+
+        - name: Deploy using CLI
+          run: |
+            jboss-cli.sh --connect --controller=${{ secrets.WILDFLY_HOST }}:9990 \
+              --user=${{ secrets.WILDFLY_USERNAME }} \
+              --password=${{ secrets.WILDFLY_PASSWORD }} \
+              --command="deploy staging/*.war --force"
