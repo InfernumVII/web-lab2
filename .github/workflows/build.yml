@@ -43,10 +43,11 @@ jobs:
             WILDFLY_VERSION=37.0.1.Final
             wget -q https://github.com/wildfly/wildfly/releases/download/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.tar.gz
             tar -xzf wildfly-$WILDFLY_VERSION.tar.gz
-            ls -la "$(pwd)/wildfly-$WILDFLY_VERSION/bin"
+            echo "$(pwd)/wildfly-$WILDFLY_VERSION/bin" >> $GITHUB_PATH
 
         - name: Deploy using CLI
           run: |
+            echo $GITHUB_PATH
             jboss-cli.sh --connect --controller=${{ secrets.WILDFLY_HOST }}:9990 \
               --user=${{ secrets.WILDFLY_USERNAME }} \
               --password=${{ secrets.WILDFLY_PASSWORD }} \
