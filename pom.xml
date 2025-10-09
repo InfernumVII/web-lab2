@@ -50,6 +50,11 @@
             <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
             <version>3.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.kylin</groupId>
+            <artifactId>kylin-core-common</artifactId>
+            <version>5.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>
